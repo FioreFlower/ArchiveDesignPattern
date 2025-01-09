@@ -1,18 +1,18 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
 public class Character : MonoBehaviour
-{ 
-    protected Animator animator;
-    protected Rigidbody rigidbody;
-    protected TextMesh textMesh;
-    
-    protected float JumpForce = 3;
+{
+    private Animator animator;
+    private Rigidbody rb;
+    protected TextMesh TextMesh;
+
+    private const float JumpForce = 3;
     protected virtual void Awake()
     {
         animator = GetComponent<Animator>();
-        rigidbody = GetComponent<Rigidbody>();
-        textMesh = GetComponentInChildren<TextMesh>();
+        rb = GetComponent<Rigidbody>();
+        TextMesh = GetComponentInChildren<TextMesh>();
     }
 
     protected void PlayRunAnimation()
@@ -23,13 +23,14 @@ public class Character : MonoBehaviour
     protected void PlayJumpAnimation()
     {
         animator.CrossFade("Jump", 0.1f);
-        rigidbody.velocity = new Vector3(rigidbody.velocity.x, JumpForce, rigidbody.velocity.z);
+        rb.velocity = new Vector3(rb.velocity.x, JumpForce, rb.velocity.z);
     }
 
     protected void DelayForSecond(float seconds)
     {
         StartCoroutine(C_DelayForSecond(seconds));
     }
+    
     private IEnumerator C_DelayForSecond(float seconds)
     {
         yield return new WaitForSeconds(seconds);
