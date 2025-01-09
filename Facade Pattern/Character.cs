@@ -1,11 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-// 첫 번째 객체: 점프 동작과 디버그 로그 출력.
-// 두 번째 객체: 달리기 동작과 디버그 로그 출력.
-// 세 번째 객체: 점프한 후 3초 후에 달리기 동작과 디버그 로그 출력.
-
-// 공통된 동작을 수행하는 기반 클래스
 public class Character : MonoBehaviour
 { 
     protected Animator animator;
